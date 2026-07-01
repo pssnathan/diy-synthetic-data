@@ -1,6 +1,6 @@
-# Mini-Project: Home DIY Repair Q&A Synthetic Data Generator
+# Project: Home DIY Repair Q&A Synthetic Data Generator
 
-Bootcamp deliverable: a **separate** pipeline under `mini-project-DIY/` that implements generate → validate → LLM-as-judge → analysis → prompt correction → benchmark calibration for Home DIY repair Q&A synthetic data.
+This project implements a complete synthetic-data pipeline for Home DIY repair Q&A: generate → validate → LLM-as-judge → analysis → prompt correction → benchmark calibration.
 
 ## Results snapshot
 
@@ -36,7 +36,7 @@ I ran the same synthetic-data workflow twice: once with `gpt-5.4-mini` and once 
 
 For `gpt-5.4-mini`, the baseline already matched or exceeded the benchmark-level quality signal: generated quality pass was 100%, while benchmark calibration was 98%. Because the baseline was already saturated, the corrected prompt did not produce a measurable improvement in these item-level metrics. This does not mean prompt correction is useless; it means this model plus the current schema and judge rubric left little room for the corrected prompt to show value. To evaluate further improvement, the next step would be dataset-level checks such as duplicate-question detection, scenario diversity, or a stricter judge rubric.
 
-The Llama run is more instructive for the exercise. Its baseline passed structure but exposed quality weaknesses, especially `safety_specificity` at 74%. After correcting the prompts, safety specificity moved to 100% and the all-dimension quality pass rate improved from 74% to 96%. This makes the prompt iteration loop visible: the schema ensured valid records, while the judge highlighted content-quality gaps that prompt changes could address.
+The Llama run is more instructive for learning the pipeline. Its baseline passed structure but exposed quality weaknesses, especially `safety_specificity` at 74%. After correcting the prompts, safety specificity moved to 100% and the all-dimension quality pass rate improved from 74% to 96%. This makes the prompt iteration loop visible: the schema ensured valid records, while the judge highlighted content-quality gaps that prompt changes could address.
 
 Both models reached 98% quality pass on the Hugging Face benchmark calibration sample. That suggests the judge rubric was reasonably aligned with known-good reference data, while the generated-data differences came from model behavior and prompt sensitivity rather than a broken benchmark connection.
 
@@ -163,7 +163,7 @@ Practical recommendation: **develop and tune prompts with Groq or OpenRouter**, 
 
 Course checklist recommends **≥50** samples per generation run.
 
-#### Independent phases (assignment: each phase runnable; Phase 6 without re-baselining)
+#### Independent phases (each phase runnable; Phase 6 without re-baselining)
 
 `baseline` / `corrected` / `full` still run the **full chain**. Use **`run-phase`** to run steps separately or to run **Phase 6** (corrected only) after editing `CORRECTED_TEMPLATES`—**`baseline_*` is not overwritten**.
 
@@ -394,6 +394,3 @@ pytest tests/ -q
 5. Fill `output/iteration_log.md` with real numbers.  
 6. When metrics meet the project success criteria, commit and push this folder as your demo.
 
-## Reference exercise
-
-Classroom patterns (prompting, evaluation workflow) live in `../synthetic-data-exercise/`; this mini-project is standalone and course-specific.
