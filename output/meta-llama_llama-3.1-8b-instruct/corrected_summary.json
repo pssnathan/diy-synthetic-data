@@ -1,0 +1,34 @@
+{
+  "run_name": "corrected",
+  "num_generated": 50,
+  "structural_pass_count": 50,
+  "structural_pass_rate": 1.0,
+  "overall_failure_rate": 0.0,
+  "per_mode_failure_rates": {
+    "incomplete_answer": 0.0,
+    "safety_violations": 0.0,
+    "unrealistic_tools": 0.0,
+    "overcomplicated_solution": 0.0,
+    "missing_context": 0.0,
+    "poor_quality_tips": 0.0
+  },
+  "quality_pass_rate": 0.96,
+  "per_dimension_quality_pass_rates": {
+    "answer_coherence": 1.0,
+    "step_actionability": 1.0,
+    "tool_realism": 1.0,
+    "safety_specificity": 1.0,
+    "tip_usefulness": 1.0,
+    "problem_answer_alignment": 1.0,
+    "appropriate_scope": 1.0,
+    "category_accuracy": 0.96
+  },
+  "items_with_three_plus_failures": 0,
+  "category_failure_rates": {
+    "appliance_repair": 0.0,
+    "hvac_maintenance": 0.0,
+    "general_home_repair": 0.0,
+    "plumbing_repair": 0.0,
+    "electrical_repair": 0.0
+  }
+}

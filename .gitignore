@@ -1,0 +1,32 @@
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Local bootcamp prompt/spec used during development; not part of public submission.
+instructions.md
+
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+
+# Generated data can be recreated and may be noisy for review.
+output/**
+!output/
+!output/**/
+!output/.gitkeep
+!output/iteration_log.md
+!output/**/*_summary.json
+!output/**/final_report.json
+!output/**/visualizations/
+!output/**/visualizations/*.png
+
+# Legacy top-level chart directory, if used.
+visualizations/*.png
+!visualizations/.gitkeep
