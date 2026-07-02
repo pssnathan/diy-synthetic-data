@@ -125,7 +125,7 @@ flowchart TB
 ## Setup
 
 ```bash
-cd mini-project-DIY
+cd home-diy-synthetic-data
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -161,14 +161,16 @@ Practical recommendation: **develop and tune prompts with Groq or OpenRouter**, 
 | `python main.py report` | Rebuild `final_report.json` and charts from saved `output/*_summary.json` (no API calls) |
 | `python main.py run-phase --phase <name> …` | Run a **single** phase; `--phase` can be a **number** (1,2,3,5,6,7) or a **name** (e.g. `generation`, `structural_validation`, `judge`, `analysis`, `corrected_rerun`, `benchmark_calibration`). See `phases.PHASE_ALIASES`. |
 
-Course checklist recommends **≥50** samples per generation run.
+Recommended sample size is **≥50** items per generation run.
 
-#### Independent phases (each phase runnable; Phase 6 without re-baselining)
+#### Independent phases
 
-`baseline` / `corrected` / `full` still run the **full chain**. Use **`run-phase`** to run steps separately or to run **Phase 6** (corrected only) after editing `CORRECTED_TEMPLATES`—**`baseline_*` is not overwritten**.
+`baseline` / `corrected` / `full` run the **full chain**. Use **`run-phase`** to run steps separately, or to rerun only the corrected pipeline after editing `CORRECTED_TEMPLATES`.
 
-| Step | Command (names) | Numeric equivalent | API |
-|------|-----------------|----------------------|-----|
+Phase 6 means: run Phases 1–5 again for the `corrected` variant only. The existing `baseline_*` files are left untouched, so the before/after comparison still uses the original baseline.
+
+| Step | Command (names) | Numeric equivalent | Calls LLM/provider API? |
+|------|-----------------|----------------------|-------------------------|
 | Phase 1 — Generation | `run-phase --phase generation --variant baseline --num-samples 50` | `--phase 1` | Yes |
 | Phase 2 — Structural validation | `run-phase --phase structural_validation --variant baseline` | `--phase 2` | No |
 | Phases 3–4 — Judge | `run-phase --phase judge --variant baseline` | `--phase 3` | Yes |
