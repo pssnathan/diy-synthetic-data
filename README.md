@@ -384,13 +384,3 @@ Supporting pieces: **`llm_client.py`** patches the OpenAI client with Instructor
 ```bash
 pytest tests/ -q
 ```
-
-## Learning path (not one-shot)
-
-1. Read 20–30 rows from the [benchmark dataset](https://huggingface.co/datasets/dipenbhuva/home-diy-repair-qa).  
-2. Run `baseline`, inspect heatmaps and per-mode rates.  
-3. Update `CORRECTED_TEMPLATES` using evidence; re-run `corrected`.  
-4. Run `benchmark`; if the judge fails >5% on any dimension, tune `JUDGE_SYSTEM` in `judge.py`.  
-5. Fill `output/iteration_log.md` with real numbers.  
-6. When metrics meet the project success criteria, commit and push this folder as your demo.
-
